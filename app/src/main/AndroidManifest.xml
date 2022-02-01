@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaudioPlayer">
         <activity
-            android:name=".PlayVideos"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:configChanges="orientation|uiMode|screenSize|screenLayout"
             android:exported="true">
