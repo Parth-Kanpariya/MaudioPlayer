@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.1695" />
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1695" />
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/drawable/ic_baseline_skip_next_24.xml" value="0.1695" />
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/drawable/ic_baseline_skip_previous_24.xml" value="0.1695" />
         <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/activity_play_videos.xml" value="0.21927083333333333" />
+        <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/custom_control_view.xml" value="0.21927083333333333" />
         <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/fragment_audio_file.xml" value="0.1" />
         <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/fragment_local_file.xml" value="0.1" />
         <entry key="..\:/andropro/MaudioPlayer/app/src/main/res/layout/fragment_play_video.xml" value="0.1" />

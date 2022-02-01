@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_localFileFragment2_to_audioFileFragment2"
             app:destination="@id/audioFileFragment2" />
+        <action
+            android:id="@+id/action_localFileFragment2_to_playVideos"
+            app:destination="@id/playVideos" />
     </fragment>
     <fragment
         android:id="@+id/videosInsideFolder"
@@ -37,4 +40,8 @@
             android:id="@+id/action_videosInsideFolder_to_playVideo"
             app:destination="@id/playVideo" />
     </fragment>
+    <activity
+        android:id="@+id/playVideos"
+        android:name="com.example.maudioplayer.PlayVideos"
+        android:label="PlayVideos" />
 </navigation>

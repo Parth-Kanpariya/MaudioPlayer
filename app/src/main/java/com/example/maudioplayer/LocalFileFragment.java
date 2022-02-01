@@ -12,11 +12,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.preference.PreferenceManager;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
@@ -47,7 +50,8 @@ public class LocalFileFragment extends Fragment implements VideoFolderAdapter.Li
     ArrayList<String>Dummy=new ArrayList<String>();
     ArrayList<VideoFolderModel> videoFolderList = new ArrayList<VideoFolderModel>();
     private int lastPosition;
-    GridLayoutManager gridLayoutManager;
+    private BottomNavigationView bottomNavigationView;
+    LinearLayoutManager linearLayoutManager;
     private final static int STORAGE_PERMISION = 101;
 
 
@@ -84,6 +88,8 @@ public class LocalFileFragment extends Fragment implements VideoFolderAdapter.Li
         SharedViewModel model= new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         lastPosition=model.getLastPosition();
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -96,6 +102,7 @@ public class LocalFileFragment extends Fragment implements VideoFolderAdapter.Li
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
 
         if(savedInstanceState!=null)
         {
@@ -111,8 +118,8 @@ public class LocalFileFragment extends Fragment implements VideoFolderAdapter.Li
 
         RecyclerView videofolderRecyclerView = rootView.findViewById(R.id.videoFolderRecyclerView);
         videofolderRecyclerView.setAdapter(new VideoFolderAdapter(videoFolderList, getContext(), this::onListItemClick));
-        gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        videofolderRecyclerView.setLayoutManager(gridLayoutManager);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        videofolderRecyclerView.setLayoutManager(linearLayoutManager);
 
 
         videofolderRecyclerView.scrollToPosition(lastPosition);
@@ -120,7 +127,7 @@ public class LocalFileFragment extends Fragment implements VideoFolderAdapter.Li
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                lastPosition = gridLayoutManager.findFirstVisibleItemPosition();
+                lastPosition = linearLayoutManager.findFirstVisibleItemPosition();
                 model.setLastPosition(lastPosition);
             }
         });

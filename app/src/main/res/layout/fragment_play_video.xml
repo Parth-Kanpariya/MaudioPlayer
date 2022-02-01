@@ -8,10 +8,139 @@
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:use_controller="true"
+        android:layout_height="match_parent"
+        app:resize_mode="fit"
+        app:hide_on_touch="true"
+        app:show_timeout="5000"
         android:keepScreenOn="true"
+        app:controller_layout_id="@layout/custom_control_view"
+        android:background="@color/black"
         android:id="@+id/exoPlayerView"/>
+
+    <LinearLayout
+        android:id="@+id/topController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#42000000"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:contentDescription="Back"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white" />
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Video Name"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:ellipsize="marquee"
+            android:textStyle="bold"
+            android:id="@+id/VideoTitleInVideo"/>
+
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_menu_24"
+            android:contentDescription="Back"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white"
+            android:layout_marginEnd="50dp"/>
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_lock_24"
+        app:layout_constraintEnd_toEndOf="@id/topController"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="lock"
+        android:backgroundTint="#42000000"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/playPauseButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="play button"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:selectableItemBackground"
+        app:tint="@color/white" />
+
+
+
+    <LinearLayout
+        android:id="@+id/BottomController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#42000000"
+        android:orientation="horizontal"
+        android:gravity="end|bottom">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/exo_controls_repeat_off"
+            android:contentDescription="Back"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white" />
+
+
+
+
+        <ImageButton
+            android:id="@+id/next_Button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_skip_previous_24"
+            android:contentDescription="previous"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white"
+           />
+        <ImageButton
+            android:id="@+id/previous_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_skip_next_24"
+            android:contentDescription="next"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white"
+            />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/exo_controls_fullscreen_enter"
+            android:contentDescription="full screen"
+            android:backgroundTint="#42000000"
+            app:tint="@color/white"
+            />
+
+
+    </LinearLayout>
 
 
 

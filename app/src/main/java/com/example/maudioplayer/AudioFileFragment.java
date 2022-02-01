@@ -2,11 +2,14 @@ package com.example.maudioplayer;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +26,7 @@ public class AudioFileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private BottomNavigationView bottomNavigationView;
     public AudioFileFragment() {
         // Required empty public constructor
     }
@@ -59,6 +62,8 @@ public class AudioFileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
         return inflater.inflate(R.layout.fragment_audio_file, container, false);
     }
 }

@@ -3,7 +3,9 @@ package com.example.maudioplayer;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
-class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     public String getTitle() {
         return title;
     }

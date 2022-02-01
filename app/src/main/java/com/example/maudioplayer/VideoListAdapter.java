@@ -2,6 +2,7 @@ package com.example.maudioplayer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.VideoListHolder> {
+public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.VideoListHolder> implements Serializable {
 
     private ArrayList<Video> videoList;
     private Context context;
@@ -53,9 +55,18 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
         holder.Folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
                 Bundle bundle=new Bundle();
                 bundle.putString("PATHOFVIDEO",videoList.get(position).getPath());
                 bundle.putString("uri",videoList.get(position).getArtUri().toString());
+                bundle.putString("VideoTitle",video.getTitle());
+                bundle.putSerializable("VideoList",videoList);
+                bundle.putSerializable("ObjectOfVideo",video);
+                bundle.putInt("Position",position);
+                bundle.putInt("SizeOfList", videoList.size());
                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.action_videosInsideFolder_to_playVideo,bundle);
 
             }

@@ -8,7 +8,9 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +30,7 @@ import java.util.ArrayList;
  * Use the {@link VideosInsideFolder#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VideosInsideFolder extends Fragment implements VideoListAdapter.ListItemClickListener {
+public class VideosInsideFolder extends Fragment implements VideoListAdapter.ListItemClickListener, Serializable {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,10 +43,11 @@ public class VideosInsideFolder extends Fragment implements VideoListAdapter.Lis
     ArrayList<Video> videoList = new ArrayList<Video>();
     ArrayList<String>Dummy=new ArrayList<String>();
     ArrayList<String>Dummy1=new ArrayList<String>();
+    private BottomNavigationView bottomNavigationView;
 
     ArrayList<VideoFolderModel> videoFolderList = new ArrayList<VideoFolderModel>();
     private int lastPosition;
-    LinearLayoutManager linearLayoutManager;
+    GridLayoutManager gridLayoutManager;
 
     public VideosInsideFolder() {
         // Required empty public constructor
@@ -79,10 +85,17 @@ public class VideosInsideFolder extends Fragment implements VideoListAdapter.Lis
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_videos_inside_folder, container, false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
+        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setVisibility(View.VISIBLE);
         if(videoList!=null)
         {
             videoList.clear();
         }
+
+
+
         int pos=0;
         if(getArguments()!=null)
         {
@@ -92,8 +105,8 @@ public class VideosInsideFolder extends Fragment implements VideoListAdapter.Lis
         }
         RecyclerView videofolderRecyclerView = rootView.findViewById(R.id.videoListRecyclerView);
         videofolderRecyclerView.setAdapter(new VideoListAdapter(videoList, getContext(), this::onListItemClick));
-        linearLayoutManager= new LinearLayoutManager(getContext());
-        videofolderRecyclerView.setLayoutManager(linearLayoutManager);
+        gridLayoutManager= new GridLayoutManager(getContext(),2);
+        videofolderRecyclerView.setLayoutManager(gridLayoutManager);
 
 //        getVideos();
         String FolderID=videoFolderList.get(pos).getFolderKey();
